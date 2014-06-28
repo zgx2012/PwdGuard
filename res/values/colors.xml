@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="username">#ff876543</color>
+    <color name="password">#ff345678</color>
+
+</resources>

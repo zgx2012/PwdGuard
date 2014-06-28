@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, LoginActivity!</string>
+    <string name="app_name">PassPort</string>
+
+    <string name="user_name">User Name :</string>
+    <string name="user_name_hint">Input User Name</string>
+    <string name="pass_word">Pass Word :</string>
+    <string name="pass_word_hint">Input Pass Word</string>
+    <string name="pass_word_confirm">Pass Word Confirm :</string>
+    <string name="pass_word_confirm_hint">Input Pass Word Again</string>
+    <string name="what">What :</string>
+    
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
+    
+    <string name="user_name_error">Error User Name</string>
+    <string name="pass_word_error">Error Pass Word</string>
+    
+    <string name="register_db_error">Register error when write data to database</string>
+    <string name="username_can_not_empty">User Name Can not Empty</string>
+    <string name="password_can_not_empty">Pass Word Can not Empty</string>
+    <string name="password_not_match">Pass Word not Match</string>
+</resources>
