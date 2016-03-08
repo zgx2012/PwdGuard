@@ -37,9 +37,6 @@ public class DialogUtil {
         return progressDialog;
     }
 
-    /*
-     * 选择日期，不包括时间
-     */
     public static void selectDate(Context context, final Button edit,
             final Date date) {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
@@ -58,74 +55,6 @@ public class DialogUtil {
         dateDlg.show();
     }
 
-    /*
-    public static void showDatePicker(Context context, final Button editText,
-            int resId) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout view = (LinearLayout) inflater.inflate(resId, null);
-        final DatePicker datePicker = (DatePicker) view
-                .findViewById(R.id.dtpicker);
-        Dialog dialog = new AlertDialog.Builder(context).setTitle("选择日期")
-                .setView(view)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        editText.setText(datePicker.getYear() + "-"
-                                + (datePicker.getMonth() + 1) + "-"
-                                + datePicker.getDayOfMonth());
-                        dialog.dismiss();
-                    }
-                }).setNegativeButton("取消", null).create();
-        dialog.show();
-    }
-    */
-
-    /*
-     * 选择日期，包括时间
-     */
-    /*
-    public static void showDateTimePicker(Context context, final Button editText) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout view = (LinearLayout) inflater.inflate(R.layout.datetime,
-                null);
-        final TimePicker timePicker = (TimePicker) view
-                .findViewById(R.id.tmpicker);
-        timePicker.setIs24HourView(true);
-        final DatePicker datePicker = (DatePicker) view
-                .findViewById(R.id.dtpicker);
-        Dialog dialog = new AlertDialog.Builder(context).setTitle("选择日期")
-                .setView(view)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        editText.setText(datePicker.getYear()
-                                + "-"
-                                + (datePicker.getMonth() + 1)
-                                + "-"
-                                + datePicker.getDayOfMonth()
-                                + " "
-                                + String.format("%02d",
-                                        timePicker.getCurrentHour())
-                                + ":"
-                                + String.format("%02d",
-                                        timePicker.getCurrentMinute()) + ":00");
-                        dialog.dismiss();
-                    }
-                }).setNegativeButton("取消", null).create();
-        dialog.show();
-    }
-    */
-
-    /**
-     * 类似spinner
-     * 
-     * @param options
-     * @param listener
-     * @return Dialog
-     * @since v 1.0
-     */
     public static void showOptionsDialog(Context context,
             final Button editText, final String[] options, final String title) {
         DialogInterface.OnClickListener lister = new DialogInterface.OnClickListener() {

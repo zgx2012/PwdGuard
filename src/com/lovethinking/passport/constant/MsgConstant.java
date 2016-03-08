@@ -1,24 +1,7 @@
-/**
- * @Project     : Baby-V1
- * @Title       : MsgConstant.java
- * @Package     : com.pr.baby.constant
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-8-9 下午04:18:06
- * @Copyright   : 2011 http://www.pengruikeji.com/ Inc. All rights reserved.
- * @version     : V1.0
- */
 package com.lovethinking.passport.constant;
 
 import android.view.Menu;
 
-/**
- * @ClassName : MsgConstant
- * @Description : TODO
- * @author : ZGX zhangguoxiao_happy@163.com
- * @date : 2011-8-9 下午04:18:06
- * 
- */
 public interface MsgConstant extends Constant {
     int MSG_DELETE_LIST_ITEM = 1;
     int MSG_SELECT_LIST_ITEM = 2;

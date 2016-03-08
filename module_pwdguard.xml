@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_pwdguard" default="compile.module.pwdguard">
+  <dirname property="module.pwdguard.basedir" file="${ant.file.module_pwdguard}"/>
+  
+  <property name="module.jdk.home.pwdguard" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.pwdguard" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.pwdguard" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.pwdguard" value="${compiler.args}"/>
+  
+  <property name="pwdguard.output.dir" value="${module.pwdguard.basedir}/out/production/PwdGuard"/>
+  <property name="pwdguard.testoutput.dir" value="${module.pwdguard.basedir}/out/test/PwdGuard"/>
+  
+  <path id="pwdguard.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="pwdguard.module.production.classpath">
+    <path refid="${module.jdk.classpath.pwdguard}"/>
+  </path>
+  
+  <path id="pwdguard.runtime.production.module.classpath">
+    <pathelement location="${pwdguard.output.dir}"/>
+  </path>
+  
+  <path id="pwdguard.module.classpath">
+    <path refid="${module.jdk.classpath.pwdguard}"/>
+    <pathelement location="${pwdguard.output.dir}"/>
+  </path>
+  
+  <path id="pwdguard.runtime.module.classpath">
+    <pathelement location="${pwdguard.testoutput.dir}"/>
+    <pathelement location="${pwdguard.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.pwdguard">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.pwdguard">
+    <patternset refid="excluded.from.module.pwdguard"/>
+  </patternset>
+  
+  <path id="pwdguard.module.sourcepath">
+    <dirset dir="${module.pwdguard.basedir}">
+      <include name="src"/>
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.pwdguard" depends="compile.module.pwdguard.production,compile.module.pwdguard.tests" description="Compile module PwdGuard"/>
+  
+  <target name="compile.module.pwdguard.production" depends="register.custom.compilers" description="Compile module PwdGuard; production classes">
+    <mkdir dir="${pwdguard.output.dir}"/>
+    <javac2 destdir="${pwdguard.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.pwdguard}/javac">
+      <compilerarg line="${compiler.args.pwdguard}"/>
+      <bootclasspath refid="pwdguard.module.bootclasspath"/>
+      <classpath refid="pwdguard.module.production.classpath"/>
+      <src refid="pwdguard.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.pwdguard"/>
+    </javac2>
+    
+    <copy todir="${pwdguard.output.dir}">
+      <fileset dir="${module.pwdguard.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.pwdguard.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.pwdguard.tests" depends="register.custom.compilers,compile.module.pwdguard.production" description="compile module PwdGuard; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.pwdguard" description="cleanup module">
+    <delete dir="${pwdguard.output.dir}"/>
+    <delete dir="${pwdguard.testoutput.dir}"/>
+  </target>
+</project>

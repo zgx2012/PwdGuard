@@ -1,13 +1,3 @@
-/**
- * @Project     : Taojia-V3
- * @Title       : HttpUtil.java
- * @Package     : pr.android.taojia.util
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-9-1 ����11:21:57
- * @Copyright   : 2011 http://www.pengruikeji.com/ Inc. All rights reserved.
- * @version     : V1.0
- */
 package com.lovethinking.passport.util;
 
 import java.io.IOException;
@@ -32,33 +22,17 @@ import org.apache.http.protocol.HTTP;
 
 import android.util.Log;
 
-/**
- * @ClassName : HttpUtil
- * @Description : TODO
- * @author : ZGX zhangguoxiao_happy@163.com
- * @date : 2011-9-1 ����11:21:57
- * 
- */
 public class HttpUtil {
 	public InputStream httpGetUrlPicture(String strUrl) throws Exception {
 		Log.d("URL", "" + strUrl);
-		// System.out.println(strUrl);
-		// ����һ��URL����
 		URL url = new URL(strUrl);
-		// ʹ��openConnection��URL����
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		// ʹ��HttpЭ�飬��������ʽΪGET
 		conn.setRequestMethod("GET");
-		// �������ӳ�ʱ�쳣��5s
 		conn.setConnectTimeout(10 * 1000);
-		// ͨ����������ȡͼƬ���
 		InputStream inStream = conn.getInputStream();
 		return inStream;
 	}
 
-	/**
-	 * ɾ��http����
-	 */
 	public InputStream httpDel(String url) {
 		HttpDelete httpdelete = new HttpDelete(url);
 		httpdelete.addHeader("Content-Type", "text/xml");
@@ -69,7 +43,6 @@ public class HttpUtil {
 	 * httpGet
 	 */
 	public InputStream httpGet(String url) {
-		// ����HttpGetʵ��
 		HttpGet request = new HttpGet(url);
 		return httpRequest(request);
 	}
@@ -104,10 +77,7 @@ public class HttpUtil {
 		}
 		return httpRequest(httpput);
 	}
-	
-	/**
-	 * ����
-	 */
+
 	private InputStream httpRequest(HttpUriRequest httpUriRequest) {
 		InputStream result = null;
 		HttpResponse response = null;
@@ -130,15 +100,12 @@ public class HttpUtil {
 		return result;
 	}
 
-	/**
-	 * ��ʼ��http
-	 */
 	private HttpClient initHttp() {
 		HttpClient client = new DefaultHttpClient();
 		client.getParams().setIntParameter(HttpConnectionParams.SO_TIMEOUT,
-				60000); // ��ʱ����
+				60000);
 		client.getParams().setIntParameter(
-				HttpConnectionParams.CONNECTION_TIMEOUT, 60000);// ���ӳ�ʱ
+				HttpConnectionParams.CONNECTION_TIMEOUT, 60000);
 		return client;
 	}
 }

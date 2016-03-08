@@ -1,13 +1,3 @@
-/**
- * @Project     : Taojia-V3
- * @Title       : DownLoadUtil.java
- * @Package     : pr.android.taojia.util
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-9-9 ����04:01:26
- * @Copyright   : 2011 http://www.pengruikeji.com/ Inc. All rights reserved.
- * @version     : V1.0
- */
 package com.lovethinking.passport.util;
 
 import java.io.FileOutputStream;
@@ -27,24 +17,13 @@ import android.view.KeyEvent;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-/**
- * @ClassName   : DownLoadUtil
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-9-9 ����04:01:26
- * 
- */
 public class DownloadUtil {
 	private static String TAG = DownloadUtil.class.getSimpleName();
 	private Context mContext;
-	/*
-	 * �ؼ�
-	 */
+
 	private ProgressDialog mProgressDialog;
 	private ProgressBar mProgressBar;
-	/*
-	 * �ļ�IO
-	 */
+
 	private long mTotalSize = 0; // Bytes
 	private long mCurSize = 0; // Bytes
 	private String mUrlString, mFilePathName;
@@ -64,27 +43,20 @@ public class DownloadUtil {
 	final public static int FINISH_DOWNLOAD = 2;
 	final public static int CANCEL_DOWNLOAD = 3;
 
-	/*
-	 * ���췽��
-	 */
 	public DownloadUtil(Context context) {
 		mContext = context;
 		mHandler = new DownloadHandler();
 		// mDownloadThread = new Thread(new DownloadRunable());
 	}
 
-	/**
-	 * ���ؽӿ�1
-	 */
+
 	public void startDownload(String urlStr, String toFile, Handler handler,
 			ProgressBar progressBar) {
 		mProgressBar = progressBar;
 		startDownload(urlStr, toFile, handler, false);
 	}
 
-	/**
-	 * ���ؽӿ�2
-	 */
+
 	public void startDownload(String urlStr, String toFile, Handler handler,
 			boolean hasDlg) {
 		mUrlString = urlStr;
@@ -98,9 +70,7 @@ public class DownloadUtil {
 		downloadFile();
 	}
 
-	/*
-	 * �߳̿�ʼ����
-	 */
+
 	private void downloadFile() {
 		new Thread(new DownloadRunable()).start();
 		// if (mDownloadThread == null)
@@ -110,23 +80,19 @@ public class DownloadUtil {
 		// mDownloadThread.start();
 	}
 
-	/**
-	 * ȡ�����ؽӿ�
-	 */
+
 	public void closeDownload() {
 		mIsDownloadCanceled = true;
 	}
 
-	/*
-	 * ����������Ի���
-	 */
+
 	private void createProgressDlg() {
 		mProgressDialog = new ProgressDialog(mContext);
 		mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		mProgressDialog.setProgress(0);
-		mProgressDialog.setTitle("��  ʾ");
-		mProgressDialog.setMessage("����������...");
-		mProgressDialog.setButton("ȡ������",
+		mProgressDialog.setTitle("Title");
+		mProgressDialog.setMessage("Message...");
+		mProgressDialog.setButton("Cancel",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						sendMessage(CANCEL_DOWNLOAD);
@@ -135,9 +101,7 @@ public class DownloadUtil {
 		mProgressDialog.setOnKeyListener(new DialogOnKeyListener());
 	}
 
-	/*
-	 * Dialog ����ť�¼�
-	 */
+
 	private class DialogOnKeyListener implements OnKeyListener {
 		public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
 			sendMessage(CANCEL_DOWNLOAD);
@@ -145,9 +109,6 @@ public class DownloadUtil {
 		}
 	}
 
-	/*
-	 * ������Ϣ
-	 */
 	private void sendMessage(final int msg) {
 		Message message = new Message();
 		message.what = msg;
@@ -161,9 +122,7 @@ public class DownloadUtil {
 		}
 	}
 
-	/*
-	 * �ı����ؽ�����Ľ��
-	 */
+
 	private DownloadHandler mHandler;
 
 	private class DownloadHandler extends Handler {
@@ -200,33 +159,23 @@ public class DownloadUtil {
 		}
 	}
 
-	/*
-	 * �߳�����
-	 */
 	private class DownloadRunable implements Runnable {
 		@Override
 		public void run() {
 			try {
-				/*
-				 * ��������
-				 */
 				URL url = new URL(mUrlString);
 				HttpURLConnection connection = (HttpURLConnection) url
 						.openConnection();
 				if(connection==null){
-					Toast.makeText(mContext, "�޿�������", Toast.LENGTH_LONG).show();
+					Toast.makeText(mContext, "error", Toast.LENGTH_LONG).show();
 					sendMessage(CANCEL_DOWNLOAD);
 					return;
 				}
-				/*
-				 * �ܴ�С
-				 */
+
 				mTotalSize = connection.getContentLength();
 				sendMessage(BEGIN_DOWNLOAD);
 				Log.d(TAG, "total size = " + mTotalSize / 1024 + " KB");
-				/*
-				 * ��ȡ�������ļ�
-				 */
+
 				mInputStream = connection.getInputStream();
 				mOutputStream = new FileOutputStream(mFilePathName);
 				Log.d(TAG, "load:" + mFilePathName);
@@ -234,7 +183,7 @@ public class DownloadUtil {
 				byte buffer[] = new byte[1024];
 				while (mCurSize<mTotalSize && mIsDownloadCanceled == false
 						&& (len = mInputStream.read(buffer)) != -1) {
-					// ��ǰ���صĴ�С
+
 					mCurSize += len;
 					sendMessage(NEW_DOWNLOAD);
 					// mIndex = (int) ((mCurSize * 100) / mTotalSize);
@@ -244,11 +193,11 @@ public class DownloadUtil {
 				mInputStream.close();
 				mOutputStream.close();
 				if (mIsDownloadCanceled == false) {
-					// �������
+
 					sendMessage(FINISH_DOWNLOAD);
 					Log.d(TAG, "download OK!");
 				} else {
-					// ȡ������
+
 					sendMessage(CANCEL_DOWNLOAD);
 					Log.d(TAG, "Download is stopped!");
 				}

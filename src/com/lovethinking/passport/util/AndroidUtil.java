@@ -1,13 +1,3 @@
-/**
- * @Project     : Taojia-V3
- * @Title       : AndroidUtil.java
- * @Package     : pr.android.taojia.util
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-9-5 ����05:20:09
- * @Copyright   : 2011 http://www.pengruikeji.com/ Inc. All rights reserved.
- * @version     : V1.0
- */
 package com.lovethinking.passport.util;
 
 import java.util.ArrayList;
@@ -28,14 +18,12 @@ import android.widget.Toast;
 /**
  * @ClassName : AndroidUtil
  * @Description : TODO
- * @author : ZGX zhangguoxiao_happy@163.com
- * @date : 2011-9-5 ����05:20:09
+ * @author : zgx2012@gmail.com
+ * @date : 2011-9-5 05:20:09
  * 
  */
 public class AndroidUtil {
-	/**
-	 * ��ǰ�ֻ��Ƿ��������
-	 */
+
 	public static boolean isInternetConnected(Context context) {
 		ConnectivityManager manager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -47,7 +35,7 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * �õ�32λΨһ��׼��(UUID)
+	 * (UUID)
 	 */
 	public static String getUUID() {
 		String[] str = UUID.randomUUID().toString().split("-");
@@ -59,7 +47,7 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * Toast��ʾ����
+	 * Toast
 	 */
 	public static void toastMsg(Context context, String msg, int duration) {
 		if (context != null)
@@ -67,7 +55,7 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * Toast��ʾ����
+	 * Toast
 	 */
 	public static void toastMsg(Context context, int resId, int duration) {
 		if (context != null)
@@ -89,8 +77,6 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * ������Ҳ����Ķ���Ч��
-	 * 
 	 * @return
 	 */
 	public static Animation inFromRightAnimation() {
@@ -105,7 +91,6 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * ���������˳��Ķ���Ч��
 	 * 
 	 * @return
 	 */
@@ -121,7 +106,6 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * �����������Ķ���Ч��
 	 * 
 	 * @return
 	 */
@@ -137,7 +121,6 @@ public class AndroidUtil {
 	}
 
 	/**
-	 * ������Ҳ��˳�ʱ�Ķ���Ч��
 	 * 
 	 * @return
 	 */

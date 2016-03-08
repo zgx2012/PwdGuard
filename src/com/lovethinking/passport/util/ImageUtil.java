@@ -1,13 +1,3 @@
-/**
- * @Project     : Utility
- * @Title       : ImageUtil.java
- * @Package     : com.android.util
- * @Description : TODO
- * @author      : ZGX  zhangguoxiao_happy@163.com
- * @date        : 2011-8-4 ����02:54:08
- * @Copyright   : 2011 http://www.pengruikeji.com/ Inc. All rights reserved.
- * @version     : V1.0
- */
 package com.lovethinking.passport.util;
 
 import java.io.File;
@@ -27,18 +17,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Bitmap.Config;
 
-/**
- * @ClassName : ImageUtil
- * @Description : ͼƬ���?����
- * @author : ZGX zhangguoxiao_happy@163.com
- * @date : 2011-8-4 ����02:54:08
- * 
- */
+
 public class ImageUtil {
 
-	/*
-	 * ·���Ƿ����
-	 */
+
 	public static void createDirIfNotExist(String path) {
 		File tmp = new File(path);
 		if (!tmp.exists()) {
@@ -46,13 +28,7 @@ public class ImageUtil {
 		}
 	}
 
-	/**
-	 * 
-	 * @Title : getBitmapByPath
-	 * @Description : ���ȫ·����ȡͼƬ
-	 * @param : pathName
-	 * @return : Bitmap
-	 */
+
 	public static Bitmap getBitmapByPath(String pathName) {
 //		MyLog.d("tag",pathName);
 		BitmapFactory.Options options = new BitmapFactory.Options();
@@ -60,32 +36,24 @@ public class ImageUtil {
 		Bitmap bm = BitmapFactory.decodeFile(pathName, options);
 		return bm;
 	}
-	
-	/**
-	 * λͼ��ȡ For ͼƬԤ��; the Image May be Zoom Out
-	 */
+
 	public static Bitmap getSimpleBitmapByPath(int desWidth,int desHeight,String pathName){
 		BitmapFactory.Options opt = new BitmapFactory.Options();
-		//��ȡͼƬ���������������ڴ�
+
 		opt.inJustDecodeBounds = true;
 		Bitmap bm = BitmapFactory.decodeFile(pathName, opt);
 		int rateW=opt.outWidth/desWidth;
 		int rateH=opt.outHeight/desHeight;
 		int rate=Math.max(rateW, rateH);
 		if(rate<1)rate=1;
-		//����������űȣ���ȡͼƬ�����������ڴ�
+
 		opt.inSampleSize=rate;
 		opt.inJustDecodeBounds = false;
 		bm = BitmapFactory.decodeFile(pathName, opt);
 		return bm;
 	}
 
-	/**
-	 * addText2Bitmap : ��λͼ���������
-	 * 
-	 * @param : bitmapΪBitmap����;textΪҪ��ӵ�����
-	 * @return : Bitmap
-	 */
+
 	public static Bitmap addText2Bitmap(Bitmap bitmap, String text) {
 		Bitmap bm = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 		Canvas canvas = new Canvas(bm);
@@ -93,19 +61,14 @@ public class ImageUtil {
 		Paint p = new Paint();
 		p.setColor(Color.YELLOW);
 		p.setTextSize(30);
-		p.setAntiAlias(true); // ���巴���
+		p.setAntiAlias(true);
 
 		canvas.drawText(text, 12.0f, 40.0f, p);
 		canvas.save();
 		return bm;
 	}
 
-	/**
-	 * saveBitmapAsJPG : ��λͼ����ΪJPG��ʽ���ļ�
-	 * 
-	 * @param : bitmapΪBitmap����;pathNameΪ���浽�ļ���ȫ·����
-	 * @return : void
-	 */
+
 	public static void saveBitmapAsJPG(Bitmap bitmap, String pathName) {
 		if (!pathName.substring(pathName.length() - 4).toLowerCase()
 				.equals(".jpg"))
@@ -147,7 +110,6 @@ public class ImageUtil {
 	}
 	
 
-	// ����غú����Ƭ����ʾ��Բ��
 	public static Bitmap toRoundCorner(Bitmap bitmap, int pixels) {
 
 		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
@@ -171,13 +133,7 @@ public class ImageUtil {
 		return output;
 	}
 
-	/**
-	 * BitmapͼƬѹ��
-	 * @param bitmap
-	 * @param w
-	 * @param h
-	 * @return
-	 */
+
 	public static Bitmap resizeBitmap(Bitmap bitmap, int w, int h) {
 		if (bitmap != null) {
 			int width = bitmap.getWidth();

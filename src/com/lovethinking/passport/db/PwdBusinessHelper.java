@@ -3,11 +3,9 @@ package com.lovethinking.passport.db;
 import java.util.List;
 import java.util.Map;
 
-import com.lovethinking.passport.constant.DbConstant;
-import com.lovethinking.passport.util.MyLog;
-
 import android.content.ContentValues;
 import android.content.Context;
+import com.lovethinking.passport.constant.DbConstant;
 
 public class PwdBusinessHelper extends DatabaseHelper implements DbConstant {
 

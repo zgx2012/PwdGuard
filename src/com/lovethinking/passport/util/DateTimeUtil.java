@@ -4,14 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * 
- * @ClassName : DateTimeUtil
- * @Description : ʱ�乤����
- * @author : ZGX zhangguoxiao_happy@163.com
- * @date : 2011-8-12 ����07:13:41
- * 
- */
 public class DateTimeUtil {
 
 	/**
@@ -73,7 +65,7 @@ public class DateTimeUtil {
 
 	/**
 	 * @Title : parse2Date
-	 * @Description : ת��Ϊʱ��
+	 * @Description :
 	 * @param : @param s
 	 * @param : @param d
 	 * @return : Date
@@ -121,54 +113,43 @@ public class DateTimeUtil {
 		return s.format(d);
 	}
 
-	/**
-	 * �������
-	 */
 	public static long daysBetweenDate(Date date1, Date date2) {
 		long d = date1.getTime() - date2.getTime();
 		return d / 86400000;
 	}
 
-	/**
-	 * ���Сʱ
-	 */
+
 	public static long hoursBetweenDate(Date date1, Date date2) {
 		long d = date1.getTime() - date2.getTime();
 		return d / 3600000;
 	}
 
-	/**
-	 * �������
-	 */
+
 	public static long minuteBetweenDate(Date date1, Date date2) {
 		long d = date1.getTime() - date2.getTime();
 		return d / 60000;
 	}
 
-	/**
-	 * �����
-	 */
+
 	public static long secondBetweenDate(Date date1, Date date2) {
 		long d = date1.getTime() - date2.getTime();
 		return d / 1000;
 	}
 
-	/**
-	 * �ж��Ƿ�����
-	 */
+
 	public static boolean isLeapYear(int year) {
 		return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 	}
 
 	/**
-	 * �������ڱȽ�
+	 *
 	 */
 	public static int compareDate(Date date1, Date date2) {
 		return date1.compareTo(date2);
 	}
 
 	/**
-	 * �����date��ʼ,����days��֮�������
+	 *
 	 */
 	public static Date dateAfterDate(Date date, long days) {
 		long d = date.getTime();
@@ -177,7 +158,7 @@ public class DateTimeUtil {
 	}
 
 	/**
-	 * �����date��ʼ,��ǰdays�������
+	 *
 	 */
 	public static Date dateBeforeDate(Date date, long days) {
 		long d = date.getTime();
